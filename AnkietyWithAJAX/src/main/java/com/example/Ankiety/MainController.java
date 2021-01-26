@@ -35,20 +35,7 @@ public class MainController {
         model.addAttribute("former", forms);
         model.addAttribute("name", formName);
         model.addAttribute("email", email);
-        System.out.println(formName);
         return "create_form";
-    }
-
-    @PostMapping("/user/add_user")
-    public String addUser(@Param("formName") String formName, @Param("email") String email){
-        System.out.println(formName);
-        System.out.println(email);
-
-        if(formName!=null && email!=null){
-            return "everything is good";
-        }else {
-            return "sth is fucked";
-        }
     }
 
     @PostMapping("/modifyform")

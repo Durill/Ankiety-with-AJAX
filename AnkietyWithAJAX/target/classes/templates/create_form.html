@@ -11,7 +11,7 @@
 
     <div class="container main">
         <h1>Want to create questionnaire fast and easy? Try it out!</h1>
-        <form th:attr="action=@{/yourform}" th:object="${former}" method="post">
+        <form th:attr="action=@{/user/add_user}" th:object="${former}" method="post" onsubmit="sendForm(this)">
             <div class="form-group">
                 <input type="hidden" th:field="*{id}">
                 <label for="table-name">Polling name:</label>
@@ -34,9 +34,6 @@
 
 <script type="text/javascript">
 
-    adder = $("#answerAdder");
-    adder.addEventListener("click", sendForm);
-
  function sendForm(form){
      userName = $("#table-name").val();
      userEmail = $("#email").val();
@@ -47,7 +44,7 @@
      $.post(url,params, function (response){
         alert(response);
      }).fail(function (){
-         alert("error wyjbal z serwera");
+         alert("error from the server");
      });
      return false;
  }
