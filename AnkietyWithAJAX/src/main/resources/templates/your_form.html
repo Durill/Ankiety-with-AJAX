@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Your form</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+<body>
+
+<h1 style="color: white" th:inline="text">[[${name}]]</h1>
+<div class="container">
+    <div class="row">
+        <div class="col">
+        </div>
+        <div class="col">
+            <form th:attr="action=@{/modifyform}" th:object="${former}" method="post">
+                <input type="hidden" th:field="*{formName}">
+                <input type="hidden" th:field="*{email}">
+                <input type="hidden" id="choices" th:field="*{numberOfChoices}">
+                <div class="eachAnswer" th:if="${splitanswer.get(0)!='null'}">
+                    <p th:text="${splitanswer.get(0)}"></p><br>
+                    <p th:text="${splitQuantities.get(0)}"></p>
+                </div>
+                <div class="eachAnswer" th:if="${splitanswer.get(1)!='null'}">
+                    <p th:text="${splitanswer.get(1)}"></p><br>
+                    <p th:text="${splitQuantities.get(1)}"></p>
+                </div>
+                <div class="eachAnswer" th:if="${splitanswer.get(2)!='null'}">
+                    <p th:text="${splitanswer.get(2)}"></p><br>
+                    <p th:text="${splitQuantities.get(2)}"></p>
+                </div>
+                <div class="eachAnswer" th:if="${splitanswer.get(3)!='null'}">
+                    <p th:text="${splitanswer.get(3)}"></p><br>
+                    <p th:text="${splitQuantities.get(3)}"></p>
+                </div>
+                <div class="eachAnswer" th:if="${splitanswer.get(4)!='null'}">
+                    <p th:text="${splitanswer.get(4)}"></p><br>
+                    <p th:text="${splitQuantities.get(4)}"></p>
+                </div>
+                <button type="submit" class="btn btn-success">Modify Answers</button>
+                <p style="color: #b3b3b3;font-style: italic;">Notice that when you modify your answers results will be reset!</p>
+            </form>
+        </div>
+        <div class="col">
+            <form th:attr="action=@{/definegroup}" th:object="${former}" method="post">
+                <input type="hidden" th:field="*{formName}">
+                <input type="hidden" th:field="*{email}">
+                <button type="submit" class="btn btn-primary">Vote</button><br>
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
