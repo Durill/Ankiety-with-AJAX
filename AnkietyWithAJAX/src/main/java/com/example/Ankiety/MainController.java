@@ -28,14 +28,12 @@ public class MainController {
         return "create_form";
     }
 
-    @PostMapping("/yourform")
-    public String saveForm(@ModelAttribute Forms forms, Model model, String formName, String email
-    ,Integer numberOfChoices, String answer1, String answer2, String answer3, String answer4, String answer5
-            , Integer quantity1, Integer quantity2, Integer quantity3, Integer quantity4, Integer quantity5){
+    @GetMapping("/yourform")
+    public String saveForm(@ModelAttribute Forms forms, Model model, String formName, String email){
         model.addAttribute("former", forms);
         model.addAttribute("name", formName);
         model.addAttribute("email", email);
-        return "create_form";
+        return "your_form";
     }
 
     @PostMapping("/modifyform")
